@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# Recreated by src/train.py; keep the Git repository lightweight.
+models/*.joblib
+data/raw/dataset.zip

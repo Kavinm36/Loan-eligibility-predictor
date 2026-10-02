@@ -1,0 +1,74 @@
+{
+  "dataset": "data\\raw\\loan_data.csv",
+  "synthetic_data_notice": "Educational demo only; not a real lending decision system.",
+  "target": "loan_status",
+  "dropped_identifier_columns": [],
+  "features": [
+    "person_age",
+    "person_gender",
+    "person_education",
+    "person_income",
+    "person_emp_exp",
+    "person_home_ownership",
+    "loan_amnt",
+    "loan_intent",
+    "loan_int_rate",
+    "loan_percent_income",
+    "cb_person_cred_hist_length",
+    "credit_score",
+    "previous_loan_defaults_on_file"
+  ],
+  "split": {
+    "train_rows": 36000,
+    "test_rows": 9000,
+    "random_state": 42,
+    "stratified": true
+  },
+  "cross_validation": "Stratified 5-fold GridSearchCV on training data only, scored by ROC-AUC.",
+  "models": {
+    "logistic_regression": {
+      "model": "logistic_regression",
+      "threshold": 0.5,
+      "precision_positive": 0.7885,
+      "recall_positive": 0.7475,
+      "roc_auc": 0.9562,
+      "confusion_matrix": [
+        [
+          6599,
+          401
+        ],
+        [
+          505,
+          1495
+        ]
+      ],
+      "cv_roc_auc": 0.9534,
+      "best_parameters": {
+        "model__C": 1.0
+      }
+    },
+    "random_forest": {
+      "model": "random_forest",
+      "threshold": 0.5,
+      "precision_positive": 0.8923,
+      "recall_positive": 0.7745,
+      "roc_auc": 0.9747,
+      "confusion_matrix": [
+        [
+          6813,
+          187
+        ],
+        [
+          451,
+          1549
+        ]
+      ],
+      "cv_roc_auc": 0.9731,
+      "best_parameters": {
+        "model__max_depth": null,
+        "model__min_samples_leaf": 1,
+        "model__n_estimators": 200
+      }
+    }
+  }
+}
